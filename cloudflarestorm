@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+
+
+
+
+# read in addresses from file
+cat input.txt | while read line
+do
+# for each address
+# 	Print hostname into file
+	echo $line >> output.txt
+	echo ----- >> output.txt
+#	Run cloudflair
+#	extract discovered IP's and print to file
+	python3 ~/Tools/cloudflair/cloudflair.py  $line | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' >> output.txt
+#	Highlight probable origin servers
+	echo ----- >> output.txt
+done
