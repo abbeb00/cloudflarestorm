@@ -20,8 +20,8 @@ do
 	for ip in "${addresses[@]}";
 	do
 		yip="${ip%$cr}"
-		echo "$yip" # >> output.txt
-		curl -I "${yip}" -s --max-time 10 | grep HTTP # >> output.txt
+		echo "$yip"  >> output.txt
+		curl -I $yip -s --max-time 10 | grep HTTP  >> output.txt
 	done
 #	Highlight probable origin servers
 	echo ----- >> output.txt
